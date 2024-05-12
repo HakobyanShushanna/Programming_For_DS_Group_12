@@ -1,0 +1,67 @@
+---
+title: "Project"
+output: html_document
+date: "2024-05-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+data <- read.csv("finaldata.csv")
+```
+
+```{r}
+data
+```
+
+
+
+```{r}
+album_counts
+```
+
+```{r}
+uniques <- unique(data$album_type)
+pastel_colors <- c("#66FFCC", "#6666FF", "#CC66FF")
+
+# Count the occurrences of each unique value in the 'album_type' column
+album_counts <- table(data$album_type)
+percentages <- album_counts / sum(album_counts) * 100
+
+
+# Create a pie chart
+pie(album_counts, labels = paste(album_counts, uniques, "\n", round(percentages, 1), "%"), col = pastel_colors,
+    main = "Proportion of Albums by Album Type", cex.main = 2,     radius = 1.08)
+```
+
+```{r}
+
+```
